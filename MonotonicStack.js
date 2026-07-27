@@ -5,28 +5,25 @@
 
 // Output: [4, 2, 4, -1, -1]
 
-
-
 function nextGreaterElement(nums) {
-    const result = new Array(nums.length).fill(-1);
-    const stack = [];
+  const result = new Array(nums.length).fill(-1);
+  const stack = [];
 
-    // Traverse from right to left
-    for (let i = nums.length - 1; i >= 0; i--) {
-
-        // Remove all smaller or equal elements
-        while (stack.length && stack[stack.length - 1] <= nums[i]) {
-            stack.pop();
-        }
-
-        // Top of stack is the next greater element
-        if (stack.length) {
-            result[i] = stack[stack.length - 1];
-        }
-
-        // Push current element
-        stack.push(nums[i]);
+  // Traverse from right to left
+  for (let i = nums.length - 1; i >= 0; i--) {
+    // Remove all smaller or equal elements
+    while (stack.length && stack[stack.length - 1] <= nums[i]) {
+      stack.pop();
     }
 
-    return result;
+    // Top of stack is the next greater element
+    if (stack.length) {
+      result[i] = stack[stack.length - 1];
+    }
+
+    // Push current element
+    stack.push(nums[i]);
+  }
+
+  return result;
 }
